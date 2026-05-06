@@ -1,0 +1,36 @@
+VAR
+    character : CHAR;
+    length_counter, word_counter, vowel_counter : INTEGER;
+
+BEGIN
+    length_counter := 0;
+    word_counter := 0;
+    vowel_counter := 0;
+
+    REPEAT
+        Read(character);
+        
+        length_counter := length_counter + 1;
+        
+        // Count vowels (case insensitive)
+        IF (character = 'a') OR (character = 'e') OR (character = 'i') OR 
+           (character = 'o') OR (character = 'u') OR
+           (character = 'A') OR (character = 'E') OR (character = 'I') OR 
+           (character = 'O') OR (character = 'U') THEN
+            vowel_counter := vowel_counter + 1;
+        ENDIF;
+        
+        // Count spaces to determine words
+        IF character = ' ' THEN
+            word_counter := word_counter + 1;
+        ENDIF;
+        
+    UNTIL character = '.';
+    
+    // Last word has no space after it
+    word_counter := word_counter + 1;
+    
+    Write("Length of the sentence: ", length_counter);
+    Write("Number of words: ", word_counter);
+    Write("Number of vowels: ", vowel_counter);
+END
